@@ -1,1 +1,1 @@
-Readme for the simple shell project
+.Readme for the simple shell project
