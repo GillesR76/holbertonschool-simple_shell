@@ -35,6 +35,7 @@ void exec(char **command)
 			exit(EXIT_FAILURE);
 		}
 		print_debug("[Success] -> execve");
+		free(*command);
 	}
 	else
 		wait(&status);
