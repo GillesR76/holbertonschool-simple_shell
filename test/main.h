@@ -7,7 +7,7 @@
 #include <sys/wait.h>
 #include <stdarg.h>
 
-#define DEBUG 1 /* 0 = false, 1 = true */
+#define DEBUG 0 /* 0 = false, 1 = true */
 
 /**
    * path_t - singly linked list

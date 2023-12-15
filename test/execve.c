@@ -10,7 +10,7 @@
 void exec(char **command)
 {
 	int status;
-	char **argv = NULL;
+	char *argv[2];
 	pid_t childPid;
 
 	print_debug("[Info] -> exec start");
