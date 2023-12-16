@@ -32,6 +32,7 @@ void exec(char **command)
 			print_debug("[Error] -> exec() -> execve failed");
 			perror("execve");
 			free(*command);
+			free(argv[0]);
 			exit(EXIT_FAILURE);
 		}
 		print_debug("[Success] -> execve");
