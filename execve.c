@@ -18,8 +18,8 @@ void exec(char **command)
 	if (childPid == -1)
 	{
 		print_debug("[Error] -> exec() -> fork invalid");
-		free(*command);
 		perror("fork");
+		free(*command);
 		exit(EXIT_FAILURE);
 	}
 	else if (childPid == 0)
@@ -35,10 +35,14 @@ void exec(char **command)
 			exit(EXIT_FAILURE);
 		}
 		print_debug("[Success] -> execve");
-		free(*command);
 	}
-	else
-		wait(&status);
+	else if (wait(&status) == -1)
+	{
+		print_debug("[Error] -> wait failed");
+		perror("wait");
+		free(*command);
+		exit(EXIT_FAILURE);
+	}
 }
 
 

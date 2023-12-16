@@ -14,12 +14,9 @@
 
 int main(void)
 {
-	char *command = malloc(1024 * sizeof(char));
+	char *command = NULL;
 	size_t commandSize = 0;
 	ssize_t bytesRead;
-
-	if (command == NULL)
-		return (1);
 
 	print_debug("[Info] -> Starting program");
 
@@ -29,6 +26,12 @@ int main(void)
 
 		if (isatty(STDIN_FILENO) == 1)
 			printf("$ ");
+		else if (isatty(STDIN_FILENO) == -1)
+		{
+			perror("isatty");
+			free(command);
+			exit(EXIT_FAILURE);
+		}
 
 		bytesRead = getline(&command, &commandSize, stdin);
 		if (bytesRead == -1)
