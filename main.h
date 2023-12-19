@@ -25,7 +25,10 @@ typedef struct path_t
 /* print_debug.c */
 int print_debug(const char *format, ...);
 
+extern char **environ;
 path_t *findPath(char *path);
 void exec(char **command);
+char *_getenv(const char *name);
+char* find_file_in_path(const char *filename);
 
 #endif
