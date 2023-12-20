@@ -35,6 +35,7 @@ Readability: Create a comprehensive README.md as the project's guide. Main Files
 
 - Example of shell function
 
+{
 $ ./simple_shell
 [Info] -> Starting program
 [Info] -> Waiting for user input
@@ -50,5 +51,5 @@ Hello, World!
 [Info] -> Waiting for user input
 $ exit
 [Info] -> Exiting program
-
+}
 Autor : Simple Shell by Gilles and Benjamin
