@@ -36,13 +36,13 @@ Readability: Create a comprehensive README.md as the project's guide. Main Files
 - Example of shell function
 
 ```
-$ ./simple_shell
+$ ./shell
 [Info] -> Starting program
 [Info] -> Waiting for user input
 $ ls
 [Success] -> byteRead valid
 Executing command: ls
-file1.txt  file2.txt  main.c  main.h  simple_shell
+execve.c  print_debug.c  main.c  main.h  shell.c
 [Info] -> Waiting for user input
 $ echo "Hello, World!"
 [Success] -> byteRead valid
