@@ -20,5 +20,6 @@ char **tokenize(char *command);
 int lencommand(char *command);
 char *find_file_in_path(char **filename);
 char *readCommand(char *command);
+void _printenv(void);
 
 #endif
