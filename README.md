@@ -8,7 +8,7 @@ Editors: Allowed vi, vim, or emacs for your coding journey. Compilation: Ensure 
 
 * Compilation Command :
 ->To compile the project, your code will be compiled this way :
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o shell
 
 * Structure and Organization
 Function Limit: Keep each file concise with ... functions. Header Inclusion: Feature all function prototypes in main.h and include guards to avoid repetition. Side Note: No more than 3 malloc function provided for this project.
