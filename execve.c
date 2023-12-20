@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
+#include "main.h"
 
 /**
  * exec - function that calls the excve function
@@ -11,43 +7,58 @@
  * Return: void
  */
 
-extern char **environ;
-
-void exec(char **command)
+void exec(char *command)
 {
 	int status;
-	char *argv[2];
+	char **argv = tokenize(command);
+	char *path;
 	pid_t childPid;
 
-	if (access(*command, F_OK) != -1)
+	path = find_file_in_path(argv);
+
+	if (argv == NULL)
+		return;
+
+	if (path == NULL)
+	{
+		fprintf(stderr, "./shell: %s: not found\n", command);
+		free(argv);
+		return;
+	}
+
+	printf("Executing command: %s\n", path);
+
+	if (access(path, X_OK) == 0)
 	{
 		childPid = fork();
 		if (childPid == -1)
 		{
 			perror("fork");
-			free(*command);
+			free(argv);
 			exit(EXIT_FAILURE);
 		}
 		else if (childPid == 0)
 		{
-			argv[0] = *command;
-			argv[1] = NULL;
-			if (execve(argv[0], argv, environ) == -1)
+			if (execve(path, argv, environ) == -1)
 			{
-				fprintf(stderr, "./shell: %s: not found\n", *command);
-				free(*command);
+				fprintf(stderr, "./shell: %s: not found\n", path);
+				free(path);
+				free(argv);
 				exit(EXIT_FAILURE);
 			}
 		}
 		else if (wait(&status) == -1)
 		{
 			perror("wait");
-			free(*command);
+			free(argv);
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
-		fprintf(stderr, "./shell: %s: not found\n", *command);
+		fprintf(stderr, "./shell: %s: not found\n", command);
+
+	free(path);
+	free(argv);
 }
 
 
