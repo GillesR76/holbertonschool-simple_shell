@@ -26,8 +26,6 @@ void exec(char *command)
 		return;
 	}
 
-	printf("Executing command: %s\n", path);
-
 	if (access(path, X_OK) == 0)
 	{
 		childPid = fork();
