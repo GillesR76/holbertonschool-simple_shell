@@ -35,21 +35,20 @@ Readability: Create a comprehensive README.md as the project's guide. Main Files
 
 - Example of shell function
 
-{
-$ ./simple_shell
+//$ ./simple_shell
 [Info] -> Starting program
 [Info] -> Waiting for user input
-$ ls
+//$ ls
 [Success] -> byteRead valid
 Executing command: ls
 file1.txt  file2.txt  main.c  main.h  simple_shell
 [Info] -> Waiting for user input
-$ echo "Hello, World!"
+//$ echo "Hello, World!"
 [Success] -> byteRead valid
 Executing command: echo "Hello, World!"
 Hello, World!
 [Info] -> Waiting for user input
-$ exit
+//$ exit
 [Info] -> Exiting program
-}
+
 Autor : Simple Shell by Gilles and Benjamin
