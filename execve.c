@@ -7,34 +7,19 @@
  * Return: void
  */
 
-void exec(char *command)
+int exec(char *command)
 {
-	int status, i;
-	char **argv = tokenize(command);
-	char *path;
+	int status;
+	char *path, **argv = tokenize(command);
 	pid_t childPid;
 
-	if (argv == NULL || argv[0] == NULL)
-		return;
-
-	if (strcmp(argv[0], "exit") == 0)
-	{
-		free(argv);
-		exit(EXIT_SUCCESS);
-	}
-	else if (strcmp(argv[0], "env") == 0)
-	{
-		_printenv();
-		free(argv);
-	}
+	if (argv == NULL)
+		return (EXIT_FAILURE);
+	if (argv[0] == NULL)
+		return (error_not_found(argv, NULL, command));
 	path = find_file_in_path(argv);
-
 	if (path == NULL)
-	{
-		fprintf(stderr, "./shell: %s: not found\n", command);
-		free(argv);
-		return;
-	}
+		return (error_not_found(argv, "./shell: %s: not found\n", command));
 
 	if (access(path, X_OK) == 0)
 	{
@@ -50,19 +35,16 @@ void exec(char *command)
 			if (execve(path, argv, environ) == -1)
 			{
 				fprintf(stderr, "./shell: %s: not found\n", path);
-				free(path);
 				free(argv);
+				free(path);
 				exit(EXIT_FAILURE);
 			}
 		}
 		waitpid(childPid, &status, 0);
 	} else
 		fprintf(stderr, "./shell: %s: not found\n", command);
-
-	for (i = 0; argv[i] != NULL; i++)
-		free(argv[i]);
-	free(path);
+	if (path != argv[0]) /* _getenv return argv[0] si commence / */
+		free(path);
 	free(argv);
+	return (EXIT_SUCCESS);
 }
-
-

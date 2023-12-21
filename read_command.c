@@ -3,7 +3,7 @@
 
 /**
  * readCommand - functions that reads a command line from input
- * @command: command line
+ * @command: string that reads the input command
  *
  * Return: returns a string containing the command line
  */
@@ -20,7 +20,7 @@ char *readCommand(char *command)
 		if (feof(stdin))
 		{
 			if (isatty(STDIN_FILENO))
-			{	
+			{
 				printf("\n");
 			}
 			free(command);

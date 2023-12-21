@@ -1,6 +1,28 @@
 #include "main.h"
 
 /**
+ * error_not_found - print default error message
+ *
+ * Return: void
+ */
+
+int error_not_found(char **ptr, const char *format, ...)
+{
+	va_list args;
+
+	if (ptr)
+		free(ptr);
+	if (format != NULL)
+	{
+		va_start(args, format);
+		vprintf(format, args);
+		va_end(args);
+	}
+	return (EXIT_FAILURE);
+}
+
+
+/**
  * print_debug - Print debug messages
  * with automatic new line
  * @format: Format string

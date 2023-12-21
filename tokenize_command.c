@@ -9,24 +9,34 @@
 
 char **tokenize(char *command)
 {
-	int size = strlen(command);
 	char *token;
 	int i;
-	char **tokens = malloc((size + 2)  * sizeof(char *));
+	char **tokens = NULL;
 
-	if (tokens == NULL)
-		return (NULL);
+	while (*command == ' ' || *command == '\t')
+		command++;
 
 	token = strtok(command, " ");
-
 	for (i = 0; token != NULL; i++)
 	{
-		tokens[i] = strdup(token);
+		tokens = realloc(tokens, (i + 1) * sizeof(char *));
+		if (tokens == NULL)
+		{
+			perror("Memory allocation error");
+			return (NULL);
+		}
+		tokens[i] = token;
 		token = strtok(NULL, " ");
 	}
 
+	/* Place pour ajouter le marqueur de fin NULL */
+	tokens = realloc(tokens, (i + 1) * sizeof(char *));
+	if (tokens == NULL)
+	{
+		perror("Memory allocation error");
+		return (NULL);
+	}
 	tokens[i] = NULL;
 
 	return (tokens);
-
 }
