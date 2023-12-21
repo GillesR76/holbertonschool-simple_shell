@@ -10,11 +10,15 @@
 
 #define DEBUG 0 /* 0 = false, 1 = true */
 
+extern char **environ;
+
+
 /* print_debug.c */
 int print_debug(const char *format, ...);
 
+int error_not_found(char **ptr, const char *format, ...);
 extern char **environ;
-void exec(char *command);
+int exec(char *command);
 char *_getenv(const char *name);
 char **tokenize(char *command);
 int lencommand(char *command);

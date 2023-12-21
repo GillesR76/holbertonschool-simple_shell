@@ -1,8 +1,14 @@
 #include "main.h"
 
+/**
+ * _getenv - function that replicates the getenv function
+ * @name: environment variable name
+ *
+ * Return: null
+ */
+
 char *_getenv(const char *name)
 {
-	extern char **environ;
 	char *token, *envCopy;
 	char *value;
 
