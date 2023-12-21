@@ -9,7 +9,7 @@
 
 void exec(char *command)
 {
-	int status;
+	int status, i;
 	char **argv = tokenize(command);
 	char *path;
 	pid_t childPid;
@@ -18,11 +18,15 @@ void exec(char *command)
 		return;
 
 	if (strcmp(argv[0], "exit") == 0)
+	{
+		free(argv);
 		exit(EXIT_SUCCESS);
-
+	}
 	else if (strcmp(argv[0], "env") == 0)
+	{
 		_printenv();
-
+		free(argv);
+	}
 	path = find_file_in_path(argv);
 
 	if (path == NULL)
@@ -61,6 +65,8 @@ void exec(char *command)
 	else
 		fprintf(stderr, "./shell: %s: not found\n", command);
 
+	for (i = 0; argv[i] != NULL; i++)
+		free(argv[i]);
 	free(path);
 	free(argv);
 }
