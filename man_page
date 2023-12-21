@@ -1,0 +1,64 @@
+.\" Manpage for simple_shell
+.TH simple_shell 1 "December 2023" "1.0" "Simple Shell Manual"
+
+.SH NAME
+simple_shell \- a super simple shell program
+
+.SH SYNOPSIS
+.B simple_shell
+
+.SH DESCRIPTION
+.I simple_shell
+is a basic interactive command-line shell that allows users to enter commands and execute them.
+
+.SH OPTIONS
+This program does not support any command-line options.
+
+.SH USAGE
+To run the simple shell, execute the following command in the terminal:
+.PP
+.EX
+$ simple_shell
+.EE
+
+Once running, enter commands at the prompt (e.g., $ ls, $ echo "Hello").
+
+.SH COMMANDS
+The simple shell supports basic commands available on the system.
+.TP
+.B exit
+Exit the shell.
+.TP
+.B [command]
+Execute the specified command.
+
+.SH EXIT STATUS
+.TP
+.B 0
+Successful program execution.
+.TP
+.B 1
+An error occurred (e.g., invalid command, failure to execute).
+
+.SH SEE ALSO
+.BR exec (3)
+
+.SH EXAMPLES
+Execute a command:
+.PP
+.EX
+$ simple_shell
+$ ls
+.EE
+Exit the shell:
+.PP
+.EX
+$ simple_shell
+$ exit
+.EE
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHOR
+Gilles and Benjamin
