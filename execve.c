@@ -14,7 +14,7 @@ void exec(char *command)
 	char *path;
 	pid_t childPid;
 
-	if (argv == NULL)
+	if (argv == NULL || argv[0] == NULL)
 		return;
 
 	if (strcmp(argv[0], "exit") == 0)
@@ -55,14 +55,8 @@ void exec(char *command)
 				exit(EXIT_FAILURE);
 			}
 		}
-		else if (wait(&status) == -1)
-		{
-			perror("wait");
-			free(argv);
-			exit(EXIT_FAILURE);
-		}
-	}
-	else
+		waitpid(childPid, &status, 0);
+	} else
 		fprintf(stderr, "./shell: %s: not found\n", command);
 
 	for (i = 0; argv[i] != NULL; i++)
