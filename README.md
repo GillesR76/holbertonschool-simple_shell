@@ -87,12 +87,27 @@ echo "                                                       " | valgrind --leak
 echo "/bin/ls -l -a" | valgrind --leak-check=full ./shell
 ```
 
+---
 ## Man page
 
 Refer to the man page for detailed information on how to use the shell function
 ```bash
 man ./man_page
 ```
+
+---
+## Files
+
+| File | Description |
+| --- | --- |
+| read_command.c | Reads a line from the standard input and returns the input |
+| _getenv.c | Replicates the getenv function to be called in the find_file_in_path function |
+| tokenize_command.c | Tokenize a command line and returns an array of strings |
+| find_file_in_path.c | Looks for files in the PATH environment variable |
+| execve.c | Calls the two previous functions in order to execute a command |
+| print_debug.c | Handles error conditions |
+| shell.c | Main function meant to replicate a simple shell |
+| main.h | The header file that contains all the functions prototypes | 
 
 ---
 
