@@ -21,7 +21,7 @@ int main(void)
 		if (strncmp(command, "exit", 4) == 0)
 		{
 			free(command);
-			return (2);  /* sortie du shell avec exit */
+			return;  /* sortie du shell avec exit */
 		}
 		if (strncmp(command, "env", 3) == 0)
 		{
