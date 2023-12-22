@@ -37,12 +37,15 @@ int exec(char *command)
 				fprintf(stderr, "./shell: %s: not found\n", path);
 				free(argv);
 				free(path);
-				exit(2);
+				exit(EXIT_FAILURE);
 			}
 		}
 		waitpid(childPid, &status, 0);
 	} else
+	{	
 		fprintf(stderr, "./shell: %s: not found\n", command);
+		return (2);
+	}
 	if (path != argv[0]) /* _getenv return argv[0] si commence / */
 		free(path);
 	free(argv);
