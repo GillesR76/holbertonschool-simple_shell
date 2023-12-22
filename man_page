@@ -5,60 +5,96 @@
 simple_shell \- a super simple shell program
 
 .SH SYNOPSIS
-.B simple_shell
+.PP
+simple_shell
 
 .SH DESCRIPTION
-.I simple_shell
-is a basic interactive command-line shell that allows users to enter commands and execute them.
+.PP
+simple_shell is a basic interactive command-line shell that allows users to enter commands and execute them.
 
 .SH OPTIONS
+.PP
 This program does not support any command-line options.
 
 .SH USAGE
-To run the simple shell, execute the following command in the terminal:
 .PP
-.EX
-$ simple_shell
-.EE
-
-Once running, enter commands at the prompt (e.g., $ ls, $ echo "Hello").
+To run the simple shell, execute the following command in the terminal:
+.TP
+$ ./shell
+.TP
+Once running, enter commands at the prompt (e.g., ls, pwd).
 
 .SH COMMANDS
+.PP
 The simple shell supports basic commands available on the system.
 .TP
-.B exit
-Exit the shell.
+exit: exits the shell.
 .TP
-.B [command]
-Execute the specified command.
+[command]: executes the specified command.
 
 .SH EXIT STATUS
 .TP
-.B 0
+0:
 Successful program execution.
 .TP
-.B 1
+1
 An error occurred (e.g., invalid command, failure to execute).
 
 .SH SEE ALSO
-.BR exec (3)
+.PP exec (3)
 
 .SH EXAMPLES
-Execute a command:
 .PP
-.EX
+To execute a command, first start the simple shell, then enter the command at the prompt:
+.TP
+$ simple_shell
+$ ls.\" Manpage for simple_shell
+.TH simple_shell 1 "December 2023" "1.0" "Simple Shell Manual"
+
+.SH NAME
+simple_shell \- a super simple shell program
+
+.SH SYNOPSIS
+.B simple_shell
+
+.SH DESCRIPTION
+.PP
+simple_shell is a basic interactive command-line shell that allows users to enter commands and execute them.
+
+.SH OPTIONS
+.PP
+This program does not support any command-line options.
+
+.SH USAGE
+.PP
+To run the simple shell, execute the following command in the terminal:
+.TP
+$ ./shell
+.TP
+Once running, enter commands at the prompt (e.g., ls, pwd).
+
+.SH COMMANDS
+.PP
+The simple shell supports basic commands available on the system.
+.TP
+exit: exits the shell.
+.TP
+[command]: executes the specified command.
+
+.SH EXIT STATUS
+.TP
+0:
+Successful program execution.
+.TP
+1
+An error occurred (e.g., invalid command, failure to execute).
+
+.SH SEE ALSO
+.PP exec (3)
+
+.SH EXAMPLES
+.PP
+To execute a command, first start the simple shell, then enter the command at the prompt:
+.TP
 $ simple_shell
 $ ls
-.EE
-Exit the shell:
-.PP
-.EX
-$ simple_shell
-$ exit
-.EE
-
-.SH BUGS
-No known bugs.
-
-.SH AUTHOR
-Gilles and Benjamin
